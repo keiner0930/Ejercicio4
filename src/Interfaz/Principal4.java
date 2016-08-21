@@ -47,7 +47,7 @@ public class Principal4 extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 3, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 0, 102));
         jLabel1.setText("Cuotas de Inmobiliaria");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 430, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 430, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
         jLabel2.setText("Metros Cuadrados a Comprar");
@@ -65,21 +65,31 @@ public class Principal4 extends javax.swing.JFrame {
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, 130, -1));
 
         txtCuotaInicial.setEditable(false);
-        jPanel1.add(txtCuotaInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, 100, 30));
+        jPanel1.add(txtCuotaInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, 130, 30));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
         jLabel4.setText("Cuotas Ordinarias");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, 170, -1));
 
         txtCuotasOrdinarias.setEditable(false);
-        jPanel1.add(txtCuotasOrdinarias, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 190, 100, 30));
+        jPanel1.add(txtCuotasOrdinarias, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 190, 130, 30));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 480, 10));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 480, 10));
 
         cmdCalcular.setText("Calcular");
+        cmdCalcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdCalcularActionPerformed(evt);
+            }
+        });
         jPanel1.add(cmdCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, -1, -1));
 
         cmdBorrar.setText("Borrar");
+        cmdBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdBorrarActionPerformed(evt);
+            }
+        });
         jPanel1.add(cmdBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 250, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -99,6 +109,36 @@ public class Principal4 extends javax.swing.JFrame {
     private void txtMetrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMetrosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMetrosActionPerformed
+
+    private void cmdCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCalcularActionPerformed
+     String res1,res2;
+     double total,metros,cinicial,cordinaria,resto;
+     
+     metros= Double.parseDouble(txtMetros.getText());
+     
+     total= 80000*metros;
+     cinicial= (total*35)/100;
+     resto= (total*65)/100;   
+     cordinaria=resto/12;  
+     
+     res1= String.valueOf(cinicial);
+     res2= String.valueOf(cordinaria);
+     txtCuotaInicial.setText(res1);
+     txtCuotasOrdinarias.setText(res2);
+     
+
+     
+    }//GEN-LAST:event_cmdCalcularActionPerformed
+
+    private void cmdBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdBorrarActionPerformed
+       
+    txtMetros.setText("");
+    txtCuotaInicial.setText("");
+    txtCuotasOrdinarias.setText("");
+    
+    txtMetros.requestFocusInWindow();
+    
+    }//GEN-LAST:event_cmdBorrarActionPerformed
 
     /**
      * @param args the command line arguments
