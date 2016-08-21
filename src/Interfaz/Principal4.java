@@ -5,6 +5,8 @@
  */
 package Interfaz;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author sony
@@ -56,6 +58,11 @@ public class Principal4 extends javax.swing.JFrame {
         txtMetros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMetrosActionPerformed(evt);
+            }
+        });
+        txtMetros.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMetrosKeyTyped(evt);
             }
         });
         jPanel1.add(txtMetros, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 80, 70, 30));
@@ -114,6 +121,13 @@ public class Principal4 extends javax.swing.JFrame {
      String res1,res2;
      double total,metros,cinicial,cordinaria,resto;
      
+     if(txtMetros.getText().isEmpty()){
+     JOptionPane.showMessageDialog(this, "Digite El Numero De Metros Cuadrados","Error",JOptionPane.ERROR_MESSAGE);
+     txtMetros.requestFocusInWindow();
+     }
+     
+     else{
+         
      metros= Double.parseDouble(txtMetros.getText());
      
      total= 80000*metros;
@@ -126,7 +140,7 @@ public class Principal4 extends javax.swing.JFrame {
      txtCuotaInicial.setText(res1);
      txtCuotasOrdinarias.setText(res2);
      
-
+     }
      
     }//GEN-LAST:event_cmdCalcularActionPerformed
 
@@ -139,6 +153,15 @@ public class Principal4 extends javax.swing.JFrame {
     txtMetros.requestFocusInWindow();
     
     }//GEN-LAST:event_cmdBorrarActionPerformed
+
+    private void txtMetrosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMetrosKeyTyped
+       
+        char c=evt.getKeyChar(); 
+     if(!Character.isDigit(c)) { 
+              getToolkit().beep();  
+              evt.consume();
+          }
+    }//GEN-LAST:event_txtMetrosKeyTyped
 
     /**
      * @param args the command line arguments
